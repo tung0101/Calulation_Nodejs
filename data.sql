@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th9 22, 2023 lúc 04:26 PM
+-- Thời gian đã tạo: Th9 30, 2023 lúc 07:23 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `coc` (
   `id` int(11) NOT NULL,
   `nguoi` varchar(255) DEFAULT NULL,
-  `ngay_thanh_toan` varchar(20) DEFAULT NULL,
+  `ngay_thanh_toan` date DEFAULT NULL,
   `so_tien` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -39,8 +39,7 @@ CREATE TABLE `coc` (
 --
 
 INSERT INTO `coc` (`id`, `nguoi`, `ngay_thanh_toan`, `so_tien`) VALUES
-(1, 'Nguyễn Văn A', '10/9/2023', 50),
-(8, 'Nguyễn Trung Hải', '18/9/2023', 68);
+(8, 'Nguyễn Trung Hải', '2023-09-18', 68000);
 
 -- --------------------------------------------------------
 
@@ -55,7 +54,7 @@ CREATE TABLE `don_hang` (
   `loai_sp` varchar(255) DEFAULT NULL,
   `so_luong` int(11) DEFAULT NULL,
   `gia` float DEFAULT NULL,
-  `ngay` varchar(20) DEFAULT NULL,
+  `ngay` date DEFAULT NULL,
   `tinh_trang` enum('Đã xong','Đã nhận') DEFAULT NULL,
   `thanh_tien` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -65,12 +64,17 @@ CREATE TABLE `don_hang` (
 --
 
 INSERT INTO `don_hang` (`id`, `nguoi_dat`, `loai_hang`, `loai_sp`, `so_luong`, `gia`, `ngay`, `tinh_trang`, `thanh_tien`) VALUES
-(7, 'Nguyễn Trung Hải', 'Facebook', 'Like chậm', 400, 23, '18/9/2023', 'Đã xong', 9200),
-(8, 'Nguyễn Trung Hải', 'Facebook', 'Cảm xúc', 100, 20, '18/9/2023', 'Đã xong', 2000),
-(9, 'Nguyễn Trung Hải', 'Facebook', 'Like chậm', 300, 23, '8/9/2023', 'Đã xong', 6900),
-(10, 'Nguyễn Trung Hải', 'Facebook', 'Cảm xúc', 100, 20, '8/9/2023', 'Đã xong', 2000),
-(11, 'Nguyễn Trung Hải', 'Facebook', 'Like chậm', 400, 23, '22/9/2023', 'Đã xong', 9200),
-(12, 'Nguyễn Trung Hải', 'Facebook', 'Cảm xúc', 100, 20, '22/9/2023', 'Đã xong', 2000);
+(7, 'Nguyễn Trung Hải', 'Facebook', 'Like chậm', 400, 23, '2023-09-18', 'Đã xong', 9200),
+(8, 'Nguyễn Trung Hải', 'Facebook', 'Cảm xúc', 100, 20, '2023-09-18', 'Đã xong', 2000),
+(9, 'Nguyễn Trung Hải', 'Facebook', 'Like chậm', 300, 23, '2023-09-08', 'Đã xong', 6900),
+(10, 'Nguyễn Trung Hải', 'Facebook', 'Cảm xúc', 100, 20, '2023-09-08', 'Đã xong', 2000),
+(11, 'Nguyễn Trung Hải', 'Facebook', 'Like chậm', 400, 23, '2023-09-22', 'Đã xong', 9200),
+(12, 'Nguyễn Trung Hải', 'Facebook', 'Cảm xúc', 100, 20, '2023-09-22', 'Đã xong', 2000),
+(13, 'Nguyễn Trung Hải', 'Facebook', 'Like chậm', 200, 23, '2023-09-27', 'Đã xong', 4600),
+(14, 'Nguyễn Trung Hải', 'Facebook', 'Cảm xúc', 200, 20, '2023-09-27', 'Đã xong', 4000),
+(15, 'Nguyễn Trung Hải', 'Facebook', 'Like chậm', 300, 23, '2023-09-30', 'Đã xong', 6900),
+(16, 'Nguyễn Trung Hải', 'Facebook', 'Cảm xúc', 100, 20, '2023-09-30', 'Đã xong', 2000),
+(17, 'Nguyễn Trung Hải', 'Facebook', 'Cảm xúc', 100, 20, '2023-09-30', 'Đã xong', 2000);
 
 -- --------------------------------------------------------
 
@@ -133,7 +137,7 @@ ALTER TABLE `coc`
 -- AUTO_INCREMENT cho bảng `don_hang`
 --
 ALTER TABLE `don_hang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT cho bảng `gia`
