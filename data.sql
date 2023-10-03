@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th9 30, 2023 lúc 07:23 AM
+-- Thời gian đã tạo: Th10 03, 2023 lúc 04:55 PM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -101,6 +101,34 @@ INSERT INTO `gia` (`id`, `loai_hang`, `ten_san_pham`, `gia`) VALUES
 (7, 'Facebook', 'Share', 1000),
 (8, 'Facebook', 'Like chậm', 23);
 
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `lich`
+--
+
+CREATE TABLE `lich` (
+  `id` int(11) NOT NULL,
+  `thu` varchar(255) DEFAULT NULL,
+  `cong_viec` varchar(255) DEFAULT NULL,
+  `gio` time DEFAULT NULL,
+  `ghi_chu` text DEFAULT NULL,
+  `ngay` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `lich`
+--
+
+INSERT INTO `lich` (`id`, `thu`, `cong_viec`, `gio`, `ghi_chu`, `ngay`) VALUES
+(5, 'Thứ 2', 'Học nhóm tại trường', '17:00:00', 'Tập trung và họp và làm dự án tốt nghiệp ', '2023-10-02'),
+(6, 'Thứ 3', 'Học nhóm oline', '19:00:00', 'Làm document và sơ đồ users case cho dự án tốt nghiệp', '2023-10-03'),
+(8, 'Thứ 4', 'Họp thực tập doanh nghiệp', '14:30:00', 'Nghe về UI UX của dự án\r\n', '2023-10-04'),
+(10, 'Thứ 4', 'Học nhóm tại trường', '17:00:00', 'Tập trung và họp và làm dự án tốt nghiệp, xây dưng sơ đồ ERD', '2023-10-04'),
+(11, 'Thứ 5', 'Tự học ở nhà', '13:00:00', 'Tự học và xây dựng Calulations', '2023-10-05'),
+(12, 'Thứ 6', 'Học nhóm tại trường', '17:00:00', 'Tập trung và họp và làm dự án tốt nghiệp', '2023-10-06'),
+(13, 'Thứ 7', 'Họp thực tập doanh nghiệp', '13:00:00', 'Traning công việc THỰC TẬP', '2023-10-07');
+
 --
 -- Chỉ mục cho các bảng đã đổ
 --
@@ -124,6 +152,12 @@ ALTER TABLE `gia`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Chỉ mục cho bảng `lich`
+--
+ALTER TABLE `lich`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT cho các bảng đã đổ
 --
 
@@ -144,6 +178,12 @@ ALTER TABLE `don_hang`
 --
 ALTER TABLE `gia`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT cho bảng `lich`
+--
+ALTER TABLE `lich`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
