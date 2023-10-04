@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 03, 2023 lúc 04:55 PM
+-- Thời gian đã tạo: Th10 04, 2023 lúc 05:54 PM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -39,7 +39,8 @@ CREATE TABLE `coc` (
 --
 
 INSERT INTO `coc` (`id`, `nguoi`, `ngay_thanh_toan`, `so_tien`) VALUES
-(8, 'Nguyễn Trung Hải', '2023-09-18', 68000);
+(8, 'Nguyễn Trung Hải', '2023-09-18', 68000),
+(9, 'Nguyễn Văn A', '2023-10-04', 50000);
 
 -- --------------------------------------------------------
 
@@ -94,12 +95,16 @@ CREATE TABLE `gia` (
 --
 
 INSERT INTO `gia` (`id`, `loai_hang`, `ten_san_pham`, `gia`) VALUES
-(1, 'Facebook', 'Like', 15),
+(1, 'Facebook', 'Like nhanh', 17),
 (3, 'Facebook', 'Cảm xúc', 20),
 (5, 'Facebook', 'Follow', 0),
 (6, 'Facebook', 'Like ưu tiên', 20),
 (7, 'Facebook', 'Share', 1000),
-(8, 'Facebook', 'Like chậm', 23);
+(8, 'Facebook', 'Like chậm', 25),
+(9, 'Tik Tok', 'Tym video Bh 1 tháng ', 22),
+(10, 'Tik Tok', 'Sub kênh Bảo hành 1 tháng', 60),
+(11, 'Tik Tok', 'View video Tỷ Lệ Cắn Đề Xuất Cao, Bh 30 ngày', 7),
+(12, 'Tik Tok', 'Share video Bh 1 tháng', 25);
 
 -- --------------------------------------------------------
 
@@ -127,7 +132,9 @@ INSERT INTO `lich` (`id`, `thu`, `cong_viec`, `gio`, `ghi_chu`, `ngay`) VALUES
 (10, 'Thứ 4', 'Học nhóm tại trường', '17:00:00', 'Tập trung và họp và làm dự án tốt nghiệp, xây dưng sơ đồ ERD', '2023-10-04'),
 (11, 'Thứ 5', 'Tự học ở nhà', '13:00:00', 'Tự học và xây dựng Calulations', '2023-10-05'),
 (12, 'Thứ 6', 'Học nhóm tại trường', '17:00:00', 'Tập trung và họp và làm dự án tốt nghiệp', '2023-10-06'),
-(13, 'Thứ 7', 'Họp thực tập doanh nghiệp', '13:00:00', 'Traning công việc THỰC TẬP', '2023-10-07');
+(13, 'Thứ 7', 'Họp thực tập doanh nghiệp', '13:00:00', 'Traning công việc THỰC TẬP', '2023-10-07'),
+(14, 'Thứ 5', 'Học nhóm thực tập dự án oline', '20:00:00', 'Ngày thứ 5 8h xác định việc mọi người tạo ví meta mask và kết nối smart contract thành công chưa\r\nSau đó Phi traning sài Git ', '2023-10-05'),
+(15, 'Thứ 7', 'Học nhóm thực tập dự án oline', '20:00:00', 'Ngày thứ 7 8h tiến hành chia base src   lên github thì tất cả tìm hiểu và góp ý về base src và đưa ra base src hoàn chỉnh ', '2023-10-07');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -165,7 +172,7 @@ ALTER TABLE `lich`
 -- AUTO_INCREMENT cho bảng `coc`
 --
 ALTER TABLE `coc`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT cho bảng `don_hang`
@@ -177,13 +184,13 @@ ALTER TABLE `don_hang`
 -- AUTO_INCREMENT cho bảng `gia`
 --
 ALTER TABLE `gia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT cho bảng `lich`
 --
 ALTER TABLE `lich`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
