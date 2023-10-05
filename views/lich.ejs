@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lịch làm việc</title>
+  <!-- Thêm Bootstrap CSS từ CDN -->
+  <script src="/javascripts/date.js"></script>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <script src="/javascripts/currency.js"></script>
+  <script src="/javascripts/time.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+  <!-- Thanh menu Bootstrap -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/home">Trang Chủ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/lich">Lịch</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/orderList">Đơn Hàng</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/priceList">Bảng Giá</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/depositList">Cọc</a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-3 mt-3 mb-3">
+        <h3 class="">Thêm lịch làm viêc</h3>
+        <form action="/addEvent" method="POST" class="text-center mt-4">
+          <div class="mb-3">
+            <input type="text" class="form-control" placeholder="Thứ" name="thu" required>
+          </div>
+          <div class="mb-3">
+            <input type="text" class="form-control" placeholder="Công việc" name="cong_viec" required>
+          </div>
+          <div class="mb-3">
+            <input type="time" class="form-control" placeholder="Giờ" name="gio" required>
+          </div>
+          <div class="mb-3">
+            <input type="date" class="form-control" placeholder="Ngày" name="ngay" required>
+          </div>
+          <div class="mb-3">
+            <textarea type="text" class="form-control " required name="ghi_chu" placeholder="Ghi chú" id="" cols="30"
+              rows="10"></textarea>
+          </div>
+          <button type="submit" class="btn btn-success">Thêm</button>
+        </form>
+      </div>
+
+      <div class="col-9">
+        <div class="d-flex gap-3 mt-3 mb-3">
+          <h3 class="col-5">Danh sách lịch làm việc</h3>
+          <button type="submit" class="btn btn-success col-2">Làm mới</button>
+          <div class="col-5">
+            <input  type="text" id="searchThứ" class="form-control" placeholder="Tìm kiếm theo thứ" id="searchThứ">
+          </div>
+        </div>
+        <table class="table table-bordered">
+          <thead>
+            <tr class="text-center bg-primary text-white">
+              <th>Thứ</th>
+              <th>Giờ</th>
+              <th>Ngày</th>
+              <th>Công việc</th>
+              <th>Ghi chú</th>
+              <th>Thao tác</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% lich.forEach(function(item) { %>
+              <tr class="text-center tr">
+                <td>
+                  <%= item.thu %>
+                </td>
+                <td class="format-time">
+                  <%= item.gio %>
+                </td>
+                <td class="format-date">
+                  <%= item.ngay %>
+                </td>
+                <td>
+                  <%= item.cong_viec %>
+                </td>
+                <td class="td">
+                  <%= item.ghi_chu %>
+                </td>
+                <td>
+                  <button class="btn btn-primary">Sửa</button>
+                  <button class="btn btn-danger">Xóa</button>
+                </td>
+              </tr>
+              <% }); %>
+          </tbody>
+        </table>
+      </div>
+      <style>
+        .tr {
+          height: 20px;
+        }
+
+        .td {
+          width: 200px;
+        }
+      </style>
+    </div>
+  </div>
+  <script>
+    // Lấy thẻ input tìm kiếm
+    const searchInput = document.getElementById('searchThứ');
+  
+    // Lấy danh sách các hàng trong bảng
+    const rows = document.querySelectorAll('tbody tr');
+  
+    // Xử lý sự kiện khi người dùng nhập vào ô tìm kiếm
+    searchInput.addEventListener('input', function () {
+      const searchText = searchInput.value.toLowerCase(); // Lấy giá trị tìm kiếm và chuyển thành chữ thường
+  
+      // Duyệt qua từng hàng trong bảng
+      rows.forEach(function (row) {
+        const thuCell = row.querySelector('td:nth-child(1)').textContent.toLowerCase(); // Lấy thứ từ hàng
+  
+        // So sánh giá trị tìm kiếm với thứ của từng hàng
+        if (thuCell.includes(searchText)) {
+          // Hiển thị hàng nếu thứ trùng khớp với tìm kiếm
+          row.style.display = '';
+        } else {
+          // Ẩn hàng nếu không trùng khớp
+          row.style.display = 'none';
+        }
+      });
+    });
+  </script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>
