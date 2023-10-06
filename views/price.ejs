@@ -7,6 +7,7 @@
   <title>Bảng giá</title>
   <!-- Thêm Bootstrap CSS từ CDN -->
   <script src="/javascripts/date.js"></script>
+  <link rel="stylesheet" href="/stylesheets/style.css">
   <script src="/javascripts/currency.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
 </head>
@@ -25,6 +26,9 @@
             <a class="nav-link" href="/home">Trang Chủ</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="/lich">Lịch</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="/orderList">Đơn Hàng</a>
           </li>
           <li class="nav-item">
@@ -41,7 +45,7 @@
   <div class="container">
     <div class="row">
       <div class="col-3">
-        <h3 class="">Thêm sản phẩm</h3>
+        <h3 class="mt-3">Thêm sản phẩm</h3>
         <form action="/addPrice" method="POST" class="text-center">
           <div class="mb-3">
             <input type="text" class="form-control" placeholder="Loại hàng" name="loai_hang" required>
@@ -56,11 +60,12 @@
         </form>
         <div class="gc">
           <h3 class="">Ghi chú</h3>
-          <p>- Bảng giá mới được cập nhật vào ngày 18/9/2023 ( Giá của follow thì sẽ thương lượng theo chất lượng )</p>
+          <p>- Bảng giá mới được cập nhật vào ngày 4/10/2023. Cập nhật thêm bảng giá của Tik Tok và sửa đổi giá của một số mặt hàng bên Facebook (Like nhanh và Like chậm). Bảng giá mới được áp dụng vào ngày 5/10/2023 </p>
+          <p>- Bảng giá mới được cập nhật vào ngày 18/9/2023. Giá của follow thì sẽ thương lượng theo chất lượng </p>
         </div>
       </div>
       <div class="col-9">
-        <h3 class="text-center">Bảng giá</h3>
+        <h3 class="text-center mt-3">Bảng giá</h3>
         <table class="table table-bordered">
           <thead>
             <tr class="text-white bg-primary text-center">
