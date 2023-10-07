@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 04, 2023 lúc 05:54 PM
+-- Thời gian đã tạo: Th10 07, 2023 lúc 06:58 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -75,7 +75,9 @@ INSERT INTO `don_hang` (`id`, `nguoi_dat`, `loai_hang`, `loai_sp`, `so_luong`, `
 (14, 'Nguyễn Trung Hải', 'Facebook', 'Cảm xúc', 200, 20, '2023-09-27', 'Đã xong', 4000),
 (15, 'Nguyễn Trung Hải', 'Facebook', 'Like chậm', 300, 23, '2023-09-30', 'Đã xong', 6900),
 (16, 'Nguyễn Trung Hải', 'Facebook', 'Cảm xúc', 100, 20, '2023-09-30', 'Đã xong', 2000),
-(17, 'Nguyễn Trung Hải', 'Facebook', 'Cảm xúc', 100, 20, '2023-09-30', 'Đã xong', 2000);
+(17, 'Nguyễn Trung Hải', 'Facebook', 'Cảm xúc', 100, 20, '2023-09-30', 'Đã xong', 2000),
+(18, 'Nguyễn Trung Hải', 'Facebook', 'Like chậm', 300, 25, '2023-10-06', 'Đã xong', 7500),
+(19, 'Nguyễn Trung Hải', 'Facebook', 'Cảm xúc', 200, 20, '2023-10-06', 'Đã xong', 4000);
 
 -- --------------------------------------------------------
 
@@ -178,7 +180,7 @@ ALTER TABLE `coc`
 -- AUTO_INCREMENT cho bảng `don_hang`
 --
 ALTER TABLE `don_hang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT cho bảng `gia`
