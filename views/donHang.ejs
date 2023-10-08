@@ -43,7 +43,7 @@
     </div>
   </nav>
   <div class="container">
-    <div class="row">
+    <div class="row ">
       <div class="col-3">
         <h3 class="mt-3">Thêm đơn hàng</h3>
         <form action="/addorderList" method="POST" class="text-center">
@@ -72,11 +72,22 @@
         </form>
       </div>
       <div class="col-9">
-        <h3 class="text-center mt-3">Danh sách đơn hàng</h3>
+        <h3 class="text-center">Danh sách đơn hàng</h3>
+        <div class="d-flex gap-3 mt-3 mb-3">
+          <div id="total-price-section" class=" col-6 ">
+            <h3>Tổng tiền: <span id="total-price" class="format-currency">0</span></h3>
+          </div>
+          <div class="col-6">
+            <input type="text" id="search-name-input" class="form-control" placeholder="Tìm kiếm đơn hàng theo người đặt">
+          </div>
+          
+        </div>
         <table class="table table-bordered">
           <thead>
             <tr class="text-center text-white bg-primary">
-              <!-- <th>ID</th> -->
+              <th>
+                <input type="checkbox" id="select-all-checkbox">
+              </th>              
               <th>Ngày mua</th>
               <th>Người đặt</th>
               <th>Loại hàng</th>
@@ -86,18 +97,19 @@
               <th>Thành tiền</th>
               <th>Trạng thái</th>
               <th>Tính năng</th>
+     
             </tr>
           </thead>
           <tbody>
             <% donhang.forEach(function(item) { %>
               <tr class="text-center">
-                <!-- <td>
-                  <%= item.id %>
-                </td> -->
+                <td>
+                  <input type="checkbox" class="order-checkbox" data-price="<%= item.thanh_tien %>" data-id="<%= item.id %>">
+                </td>   
                 <td class="format-date ">
                   <%= item.ngay %>
                 </td>
-                <td>
+                <td class="order-name">
                   <%= item.nguoi_dat %>
                 </td>
                 <td>
@@ -115,21 +127,92 @@
                 <td class="format-currency">
                   <%= item.thanh_tien %>
                 </td>
-                <td class="<%= item.tinh_trang === 'Đã nhận' ? 'bg-danger' : 'bg-warning' %> text-dark">
+                <td class="<%= item.tinh_trang === 'Chưa xong' ? 'bg-danger' : 'bg-warning' %> text-dark">
                   <%= item.tinh_trang %>
                 </td>
                 <td>
                   <button class="btn btn-primary">Sửa</button>
                   <button class="btn btn-danger">Xóa</button>
                 </td>
+                            
               </tr>
               <% }); %>
           </tbody>
         </table>
       </div>
-
     </div>
   </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Xử lý sự kiện khi checkbox "Chọn tất cả" được thay đổi
+      $("#select-all-checkbox").change(function() {
+        // Lấy trạng thái (được chọn hoặc không được chọn) của checkbox "Chọn tất cả"
+        var isChecked = $(this).prop("checked");
+  
+        // Đặt trạng thái cho tất cả các ô checkbox của đơn hàng dựa trên checkbox "Chọn tất cả"
+        $(".order-checkbox").prop("checked", isChecked);
+  
+        // Tính tổng tiền lại dựa trên các đơn hàng đã chọn
+        calculateTotalPrice();
+      });
+  
+      // Xử lý sự kiện khi ô checkbox của từng đơn hàng được thay đổi
+      $(".order-checkbox").change(function() {
+        // Tính tổng tiền lại dựa trên các đơn hàng đã chọn
+        calculateTotalPrice();
+      });
+  
+      // Hàm tính tổng tiền dựa trên các đơn hàng đã chọn
+      function calculateTotalPrice() {
+        // Mảng lưu trữ các đơn hàng đã chọn
+        var selectedOrders = [];
+  
+        // Lặp qua tất cả các ô checkbox của đơn hàng
+        $(".order-checkbox").each(function() {
+          if ($(this).prop("checked")) {
+            var orderId = $(this).data("id");
+            var orderPrice = parseFloat($(this).data("price"));
+            selectedOrders.push({ id: orderId, price: orderPrice });
+          }
+        });
+  
+        // Tính tổng tiền
+        var totalPrice = selectedOrders.reduce(function(total, order) {
+          return total + order.price;
+        }, 0);
+  
+        // Hiển thị tổng tiền
+        $("#total-price").text(formatMoney(totalPrice));
+      }
+      function formatMoney(amount) {
+      return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
+    }
+    });
+  </script>
+  
+<script>
+  $(document).ready(function() {
+    // Lắng nghe sự kiện khi người dùng gõ vào ô input tìm kiếm
+    $("#search-name-input").on("input", function() {
+      var searchName = $(this).val().trim().toLowerCase(); // Lấy giá trị từ ô input
+
+      // Lặp qua tất cả các dòng trong bảng
+      $("tbody tr").each(function() {
+        var orderName = $(this).find(".order-name").text().trim().toLowerCase(); // Lấy tên từ dòng
+
+        // So sánh tên với tên tìm kiếm
+        if (searchName === "" || orderName.includes(searchName)) {
+          $(this).show(); // Hiển thị dòng nếu tên khớp hoặc không có tìm kiếm
+        } else {
+          $(this).hide(); // Ẩn dòng nếu không khớp
+        }
+      });
+    });
+  });
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>
 </body>
