@@ -35,6 +35,17 @@ class Lich {
       result(null, results);
     });
   }
+  static deleteAll(result) {
+    db.query('DELETE FROM lich', (error, results) => {
+      if (error) {
+        console.error('Lỗi khi xóa tất cả sự kiện trong lịch: ', error);
+        result(error, null);
+        return;
+      }
+      console.log('Đã xóa tất cả sự kiện trong lịch.');
+      result(null, results);
+    });
+  }
 }
 
 module.exports = Lich;
