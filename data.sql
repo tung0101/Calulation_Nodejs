@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 07, 2023 lúc 05:45 PM
+-- Thời gian đã tạo: Th10 12, 2023 lúc 01:19 PM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -40,7 +40,7 @@ CREATE TABLE `coc` (
 
 INSERT INTO `coc` (`id`, `nguoi`, `ngay_thanh_toan`, `so_tien`) VALUES
 (8, 'Nguyễn Trung Hải', '2023-09-18', 68000.00),
-(9, 'Nguyễn Văn A', '2023-10-04', 50000.00);
+(10, 'Nguyễn Trung Hải', '2023-10-11', 20000.00);
 
 -- --------------------------------------------------------
 
@@ -78,7 +78,10 @@ INSERT INTO `don_hang` (`id`, `nguoi_dat`, `loai_hang`, `loai_sp`, `so_luong`, `
 (17, 'Nguyễn Trung Hải', 'Facebook', 'Cảm xúc', 100, 20, '2023-09-30', 'Đã xong', 2000),
 (18, 'Nguyễn Trung Hải', 'Facebook', 'Cảm xúc', 200, 20, '2023-10-06', 'Đã xong', 4000),
 (19, 'Nguyễn Trung Hải', 'Facebook', 'Like chậm', 300, 25, '2023-10-06', 'Đã xong', 7500),
-(21, 'Nguyễn Doãn Tùng', 'Facebook', 'Like chậm', 1000, 25, '2023-10-07', 'Chưa xong', 25000);
+(21, 'Nguyễn Doãn Tùng', 'Facebook', 'Like chậm', 1000, 25, '2023-10-07', 'Chưa xong', 25000),
+(22, 'Nguyễn Doãn Tùng', 'Facebook', 'Like chậm', 500, 25, '2023-10-08', 'Chưa xong', 12500),
+(23, 'Nguyễn Trung Hải', 'Facebook', 'Like chậm', 250, 25, '2023-10-11', 'Đã xong', 6250),
+(24, 'Nguyễn Trung Hải', 'Facebook', 'Cảm xúc', 150, 20, '2023-10-11', 'Đã xong', 3000);
 
 -- --------------------------------------------------------
 
@@ -129,15 +132,50 @@ CREATE TABLE `lich` (
 --
 
 INSERT INTO `lich` (`id`, `thu`, `cong_viec`, `gio`, `ghi_chu`, `ngay`) VALUES
-(5, 'Thứ 2', 'Học nhóm tại trường', '17:00:00', 'Tập trung và họp và làm dự án tốt nghiệp ', '2023-10-02'),
-(6, 'Thứ 3', 'Học nhóm oline', '19:00:00', 'Làm document và sơ đồ users case cho dự án tốt nghiệp', '2023-10-03'),
-(8, 'Thứ 4', 'Họp thực tập doanh nghiệp', '14:30:00', 'Nghe về UI UX của dự án\r\n', '2023-10-04'),
-(10, 'Thứ 4', 'Học nhóm tại trường', '17:00:00', 'Tập trung và họp và làm dự án tốt nghiệp, xây dưng sơ đồ ERD', '2023-10-04'),
-(11, 'Thứ 5', 'Tự học ở nhà', '13:00:00', 'Tự học và xây dựng Calulations', '2023-10-05'),
-(12, 'Thứ 6', 'Học nhóm tại trường', '17:00:00', 'Tập trung và họp và làm dự án tốt nghiệp', '2023-10-06'),
-(13, 'Thứ 7', 'Họp thực tập doanh nghiệp', '13:00:00', 'Traning công việc THỰC TẬP', '2023-10-07'),
-(14, 'Thứ 5', 'Học nhóm thực tập dự án oline', '20:00:00', 'Ngày thứ 5 8h xác định việc mọi người tạo ví meta mask và kết nối smart contract thành công chưa\r\nSau đó Phi traning sài Git ', '2023-10-05'),
-(15, 'Thứ 7', 'Học nhóm thực tập dự án oline', '20:00:00', 'Ngày thứ 7 8h tiến hành chia base src   lên github thì tất cả tìm hiểu và góp ý về base src và đưa ra base src hoàn chỉnh ', '2023-10-07');
+(16, 'Thứ 2', 'Học nhóm dự án tốt nghiệp tại trường', '17:00:00', 'bàn giao task và công việc cho đầu tuần', '2023-10-09'),
+(17, 'Thứ 4', 'Học nhóm dự án tốt nghiệp tại trường', '17:00:00', 'Tiếp tục các công việc đang còn giang dở', '2023-10-11'),
+(18, 'Thứ 6', 'Học nhóm dự án tốt nghiệp tại trường', '17:00:00', 'Nghiệm thu công việc', '2023-10-13'),
+(19, 'Thứ 3', 'Học nhóm thực tập dự án oline', '20:00:00', 'Thực hiện các công việc được giao', '2023-10-10'),
+(20, 'Thứ 5', 'Học nhóm thực tập dự án oline', '20:00:00', 'Thực hiện các công việc được giao', '2023-10-12'),
+(21, 'Thứ 7', 'Học nhóm thực tập dự án oline', '20:00:00', 'Thực hiện các công việc được giao', '2023-10-14');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `questions`
+--
+
+CREATE TABLE `questions` (
+  `id` int(11) NOT NULL,
+  `question` varchar(255) NOT NULL,
+  `answer` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `questions`
+--
+
+INSERT INTO `questions` (`id`, `question`, `answer`) VALUES
+(1, 'Hello, Hi, Xin chào', 'Xin chào anh/chị\n\nChúng tôi có thể giúp gì được cho anh chị ạ?'),
+(2, 'Bạn có những dịch vụ spa nào?', 'Chúng tôi cung cấp các dịch vụ spa như massage, xông hơi, chăm sóc da, làm móng, và gội đầu.'),
+(3, 'Bạn có gói dịch vụ nào phổ biến nhất?', 'Gói dịch vụ phổ biến nhất của chúng tôi là \"Trọn bộ chăm sóc toàn diện\" bao gồm massage, xông hơi và chăm sóc da.'),
+(4, 'Bạn có giá ưu đãi cho khách hàng thường xuyên không?', 'Chúng tôi có chương trình thành viên để khách hàng thường xuyên nhận được ưu đãi đặc biệt và giảm giá cho các dịch vụ spa.'),
+(5, 'Tôi có thể đặt lịch hẹn qua điện thoại không?', 'Đương nhiên! Bạn có thể đặt lịch hẹn qua số điện thoại XXXX hoặc trực tiếp ghé thăm cửa hàng để đặt lịch.'),
+(6, 'Làm thế nào để đặt lịch hẹn trực tuyến?', 'Bạn có thể đặt lịch hẹn trực tuyến trên trang web của chúng tôi bằng cách điền vào biểu mẫu đặt lịch hẹn.'),
+(7, 'Spa của bạn có chương trình đào tạo cho học viên không?', 'Đúng vậy! Chúng tôi cung cấp chương trình đào tạo chuyên nghiệp cho học viên muốn trở thành nhân viên trong ngành spa.'),
+(8, 'Chương trình đào tạo của bạn bao gồm những khóa học nào?', 'Chương trình đào tạo của chúng tôi bao gồm các khóa học về massage, chăm sóc da, làm móng, xông hơi và các kỹ năng khác liên quan đến spa.'),
+(9, 'Bạn có chứng chỉ sau khi hoàn thành khóa đào tạo không?', 'Có, học viên hoàn thành khóa đào tạo sẽ nhận được chứng chỉ chứng nhận về kỹ năng và kiến thức đã học.'),
+(10, 'Chương trình đào tạo của bạn kéo dài bao lâu?', 'Thời gian đào tạo phụ thuộc vào từng khóa học cụ thể. Thông thường, chương trình đào tạo kéo dài từ vài tuần đến một vài tháng.'),
+(11, 'Bạn yêu cầu điều kiện gì để tham gia chương trình đào tạo?', 'Để tham gia chương trình đào tạo, học viên cần có tuổi trên 18, đam mê và sự cam kết với ngành spa.'),
+(12, ' Chương trình đào tạo có thể linh hoạt về thời gian không?', 'Chúng tôi cung cấp các lịch học linh hoạt, bao gồm cả buổi học ban ngày và ban tối, để phù hợp với lịch trình của học viên.'),
+(13, ' Học viên có cơ hội thực hành trong Spa không?', ' Đúng vậy! Chúng tôi cung cấp cơ hội thực hành thực tế trong Spa để học viên có thể áp dụng kiến thức đã học vào thực tế.'),
+(14, 'Có cơ hội việc làm sau khi hoàn thành khóa đào tạo không?', 'Chúng tôi sẽ hỗ trợ học viên tìm kiếm cơ hội việc làm sau khi hoàn thành khóa đào tạo và có thể giới thiệu họ cho đối tác và nhà tuyển dụng trong ngành spa.'),
+(15, 'Chương trình đào tạo của bạn có học phí không?', 'Chương trình đào tạo có học phí. Vui lòng liên hệ với chúng tôi để biết thông tin chi tiết về học phí và các khoản hỗ trợ tài chính có sẵn.'),
+(16, 'Bạn có giáo viên chuyên nghiệp hướng dẫn trong chương trình đào tạo không?', 'Chúng tôi có đội ngũ giáo viên giàu kinh nghiệm và chuyên môn trong lĩnh vực spa'),
+(17, 'Bạn có dịch vụ làm đẹp cho cô dâu không?', 'Đúng vậy! Chúng tôi cung cấp các dịch vụ làm đẹp đặc biệt dành cho cô dâu, bao gồm trang điểm, làm tóc và chăm sóc da.'),
+(18, 'Bạn có dịch vụ trị liệu và phục hồi sau chấn thương không?', 'Chúng tôi cung cấp dịch vụ trị liệu và phục hồi sau chấn thương, bao gồm massage tái tạo cơ bản và các phương pháp trị liệu đặc biệt.'),
+(19, 'Bạn có dịch vụ xóa mụn không?', 'Chúng tôi cung cấp dịch vụ xóa mụn và điều trị da mụn bằng các liệu pháp chuyên nghiệp và sản phẩm chăm sóc da đặc biệt.'),
+(20, 'Bạn có dịch vụ tẩy lông không?', 'Chúng tôi có dịch vụ trị liệu bằng đá nóngđể giúp cơ thể thư giãn, giảm căng thẳng và cân bằng năng lượng.');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -168,6 +206,12 @@ ALTER TABLE `lich`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Chỉ mục cho bảng `questions`
+--
+ALTER TABLE `questions`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT cho các bảng đã đổ
 --
 
@@ -175,13 +219,13 @@ ALTER TABLE `lich`
 -- AUTO_INCREMENT cho bảng `coc`
 --
 ALTER TABLE `coc`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT cho bảng `don_hang`
 --
 ALTER TABLE `don_hang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT cho bảng `gia`
@@ -193,7 +237,13 @@ ALTER TABLE `gia`
 -- AUTO_INCREMENT cho bảng `lich`
 --
 ALTER TABLE `lich`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT cho bảng `questions`
+--
+ALTER TABLE `questions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
