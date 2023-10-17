@@ -7,6 +7,7 @@ const donHang = require('./controllers/donHang');
 const coc = require ('./controllers/coc');
 const lich = require ('./controllers/lich');
 const Banggia = require ('./controllers/Banggia');
+const questionRoutes = require('./routes/questionRoutes');
 const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -29,7 +30,8 @@ app.post('/addPrice', Banggia.addPrice);
 app.get('/lich',lich.list);
 app.post('/addEvent', lich.addlich);
 app.post('/deleteAll',lich.deleteAll);
+app.use('/api/questions', questionRoutes);
 // Khởi động máy chủ trên cổng 3000
-app.listen(3000, () => {
-  console.log('Server is running on port 3000');
+app.listen(8000, () => {
+  console.log('Server is running on port 8000');
 });

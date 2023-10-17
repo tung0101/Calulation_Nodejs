@@ -29,7 +29,7 @@ class DonHang {
   }
 
   static getAll(result) {
-    db.query('SELECT * FROM don_hang', (error, results) => {
+    db.query('SELECT * FROM don_hang ORDER BY ngay DESC', (error, results) => {
       if (error) {
         console.error('Lỗi khi lấy danh sách đơn hàng: ', error);
         result(error, null);
@@ -37,7 +37,7 @@ class DonHang {
       }
       result(null, results);
     });
-  }
+  }  
 }
 
 module.exports = DonHang;

@@ -1,8 +1,30 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+/* Đổi màu nền và màu chữ của thanh điều hướng */
+.navbar {
+  background-color: #007BFF; /* Màu nền */
 }
 
-a {
-  color: #00B7FF;
+/* Tùy chỉnh màu nền nút gấp thanh điều hướng */
+.navbar-toggler-icon {
+  background-color: #ffffff; /* Màu nền nút gấp */
 }
+
+/* Điều chỉnh khoảng cách giữa các mục trong thanh điều hướng */
+.navbar-nav {
+  margin-right: 20px; /* Khoảng cách bên phải của các mục */
+}
+
+.nav-item {
+  margin-right: 10px; /* Khoảng cách giữa các mục */
+}
+
+/* Điều chỉnh kích thước chữ và font chữ */
+.navbar-nav {
+  font-size: 18px; /* Kích thước chữ */
+}
+
+.nav-item {
+  font-weight: bold; /* Font chữ đậm */
+}
+
+
+

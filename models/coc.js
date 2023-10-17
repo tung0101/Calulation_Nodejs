@@ -24,7 +24,7 @@ class coc {
   }
 
   static getAll(result) {
-    db.query('SELECT * FROM coc', (error, results) => {
+    db.query('SELECT * FROM coc ORDER BY ngay_thanh_toan DESC', (error, results) => {
       if (error) {
         console.error('Lỗi khi lấy danh sách cọc: ', error);
         result(error, null);
@@ -33,6 +33,44 @@ class coc {
       result(null, results);
     });
   }
+  static update(id, updatedPrice, result) {
+    db.query(
+      'UPDATE coc SET nguoi = ?, ngay_thanh_toan = ?, so_tien = ? WHERE id = ?',
+      [updatedPrice.nguoi, updatedPrice.ngay_thanh_toan, updatedPrice.so_tien, id],
+      (error, results) => {
+        if (error) {
+          console.error('Lỗi khi cập nhật cọc: ', error);
+          result(error, null);
+          return;
+        }
+        if (results.affectedRows === 0) {
+          // Không tìm thấy cọc với id cụ thể
+          result({ kind: 'not_found' }, null);
+          return;
+        }
+        console.log('Cập nhật cọc thành công: id ' + id);
+        result(null, { id, ...updatedPrice });
+      }
+    );
+  }
+  static remove(id, result) {
+    db.query('DELETE FROM coc WHERE id = ?', id, (error, results) => {
+      if (error) {
+        console.error('Lỗi khi xóa cọc: ', error);
+        result(error, null);
+        return;
+      }
+      if (results.affectedRows === 0) {
+        // Không tìm thấy cọc với id cụ thể
+        result({ kind: 'not_found' }, null);
+        return;
+      }
+      console.log('Xóa cọc thành công: id ' + id);
+      result(null, results);
+    });
+  }
+  
+  
 }
 
 module.exports = coc;

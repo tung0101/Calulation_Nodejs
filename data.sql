@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 14, 2023 lúc 03:47 PM
+-- Thời gian đã tạo: Th10 17, 2023 lúc 11:53 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -134,12 +134,9 @@ CREATE TABLE `lich` (
 --
 
 INSERT INTO `lich` (`id`, `thu`, `cong_viec`, `gio`, `ghi_chu`, `ngay`) VALUES
-(16, 'Thứ 2', 'Học nhóm dự án tốt nghiệp tại trường', '17:00:00', 'bàn giao task và công việc cho đầu tuần', '2023-10-09'),
-(17, 'Thứ 4', 'Học nhóm dự án tốt nghiệp tại trường', '17:00:00', 'Tiếp tục các công việc đang còn giang dở', '2023-10-11'),
-(18, 'Thứ 6', 'Học nhóm dự án tốt nghiệp tại trường', '17:00:00', 'Nghiệm thu công việc', '2023-10-13'),
-(19, 'Thứ 3', 'Học nhóm thực tập dự án oline', '20:00:00', 'Thực hiện các công việc được giao', '2023-10-10'),
-(20, 'Thứ 5', 'Học nhóm thực tập dự án oline', '20:00:00', 'Thực hiện các công việc được giao', '2023-10-12'),
-(21, 'Thứ 7', 'Học nhóm thực tập dự án oline', '20:00:00', 'Thực hiện các công việc được giao', '2023-10-14');
+(22, 'Thứ 3', 'Học nhóm thực tập dự án oline', '20:00:00', 'Kiểm tra tiến độ mọi người', '2023-10-17'),
+(23, 'Thứ 5', 'Học nhóm thực tập dự án oline', '20:00:00', 'Kiểm tra tiến độ mọi người', '2023-10-19'),
+(24, 'Thứ 7', 'Học nhóm thực tập dự án oline', '20:00:00', 'Kiểm tra tiến độ mọi người', '2023-10-21');
 
 -- --------------------------------------------------------
 
@@ -239,7 +236,7 @@ ALTER TABLE `gia`
 -- AUTO_INCREMENT cho bảng `lich`
 --
 ALTER TABLE `lich`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT cho bảng `questions`

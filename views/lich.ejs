@@ -72,8 +72,10 @@
       <div class="col-9">
         <div class="d-flex gap-3 mt-3 mb-3">
           <h3 class="col-5">Danh sách lịch làm việc</h3>
-          <button type="button" id="refreshButton" class="btn btn-success col-2">Làm mới</button>
-
+          
+          <form action="/deleteAll" method="POST" class="col-2">
+            <button type="submit"  class="btn btn-success ">Làm mới</button>
+          </form>
           <div class="col-5">
             <input  type="text" id="searchThứ" class="form-control" placeholder="Tìm kiếm theo thứ" id="searchThứ">
           </div>
@@ -151,19 +153,6 @@
           row.style.display = 'none';
         }
       });
-    });
-  </script>
-  <script>
-    // Lấy thẻ button "Làm mới" bằng ID
-    const refreshButton = document.getElementById('refreshButton');
-  
-    // Lấy thẻ tbody của bảng lich
-    const tbody = document.querySelector('tbody');
-  
-    // Xử lý sự kiện khi nút "Làm mới" được nhấn
-    refreshButton.addEventListener('click', function () {
-      // Xóa toàn bộ nội dung trong tbody
-      tbody.innerHTML = '';
     });
   </script>
   
