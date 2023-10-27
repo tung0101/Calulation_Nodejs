@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 24, 2023 lúc 05:06 AM
+-- Thời gian đã tạo: Th10 17, 2023 lúc 11:53 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -128,6 +128,15 @@ CREATE TABLE `lich` (
   `ghi_chu` text DEFAULT NULL,
   `ngay` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `lich`
+--
+
+INSERT INTO `lich` (`id`, `thu`, `cong_viec`, `gio`, `ghi_chu`, `ngay`) VALUES
+(22, 'Thứ 3', 'Học nhóm thực tập dự án oline', '20:00:00', 'Kiểm tra tiến độ mọi người', '2023-10-17'),
+(23, 'Thứ 5', 'Học nhóm thực tập dự án oline', '20:00:00', 'Kiểm tra tiến độ mọi người', '2023-10-19'),
+(24, 'Thứ 7', 'Học nhóm thực tập dự án oline', '20:00:00', 'Kiểm tra tiến độ mọi người', '2023-10-21');
 
 -- --------------------------------------------------------
 
